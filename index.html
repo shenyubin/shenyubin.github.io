@@ -142,38 +142,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>开启博客的多说</p>
-<h2 id="1-多说账号和多说站点"><a href="#1-多说账号和多说站点" class="headerlink" title="1. 多说账号和多说站点"></a>1. 多说账号和多说站点</h2><p>[创建站点(点这里)] (<a href="http://duoshuo.com/create-site/" target="_blank" rel="external">http://duoshuo.com/create-site/</a>)<br><br><br><img src="/img/duoshuo.png" alt="多说站点创建截图"></p>
-<ol>
-<li><p>配置config<br><strong>在themes/yilia/_config.yml</strong></p>
-<p> #是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key<br> #若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论<br> duoshuo: true<br> duoshuo_shortname: shenyubin blog</p>
-</li>
-</ol>
-<p><br></p>
-<ol>
-<li><p>修改themes\landscape\layout_partial\article.ejs的文件<br><strong>把原来的</strong></p>
-<p> &lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;<br>   <section id="comments"><br> <div id="disqus_thread"><br>   <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><br> </div><br>   </section><br> &lt;% } %&gt;<br><strong>改成</strong></p>
-<p> &lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname){ %&gt;<br>   <section id="comments"></section></p>
-<pre><code>&lt;!-- 多说评论框 start --&gt;
-&lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;&quot; data-title=&quot;&lt;%= post.title %&gt;&quot; data-url=&quot;&lt;%= page.permalink %&gt;&quot;&gt;&lt;/div&gt;
-&lt;!-- 多说评论框 end --&gt;
-&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-var duoshuoQuery = {short_name:&apos;&lt;%= config.duoshuo_shortname %&gt;&apos;};
-  (function() {
-    var ds = document.createElement(&apos;script&apos;);
-    ds.type = &apos;text/javascript&apos;;
-    ds.async = true;
-    ds.src = (document.location.protocol == &apos;https:&apos; ? &apos;https:&apos; : &apos;http:&apos;) + &apos;//static.duoshuo.com/embed.js&apos;;
-    ds.charset = &apos;UTF-8&apos;;
-    (document.getElementsByTagName(&apos;head&apos;)[0] 
-     || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);
-  })();
-  &lt;/script&gt;
-&lt;!-- 多说公共JS代码 end --&gt;
-</code></pre><p>   <br> &lt;% } %&gt;</p>
-</li>
-</ol>
-<p><br></p>
+<h2 id="1-多说账号和多说站点"><a href="#1-多说账号和多说站点" class="headerlink" title="1. 多说账号和多说站点"></a>1. 多说账号和多说站点</h2><p><a href="http://duoshuo.com/create-site/" target="_blank" rel="external">创建站点点这里</a><br><br><br><img src="/img/duoshuo.png" alt="多说站点创建截图"></p>
+<h2 id="2-配置config"><a href="#2-配置config" class="headerlink" title="2. 配置config"></a>2. 配置config</h2><p><strong>在themes/yilia/_config.yml</strong></p>
+<pre><code>#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
+#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
+duoshuo: shenyubin blog
+duoshuo_shortname: shenyubin blog
+</code></pre><p><br></p>
+<h2 id="3-修改themes-landscape-layout-partial-article-ejs的文件"><a href="#3-修改themes-landscape-layout-partial-article-ejs的文件" class="headerlink" title="3. 修改themes\landscape\layout_partial\article.ejs的文件"></a>3. 修改themes\landscape\layout_partial\article.ejs的文件</h2><p><strong>把原来的</strong></p>
+<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
+&lt;section id=&quot;comments&quot;&gt;
+&lt;div id=&quot;disqus_thread&quot;&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;//disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;% } %&gt;
+</code></pre><p><strong>改成</strong></p>
+<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname){ %&gt;
+  &lt;section id=&quot;comments&quot;&gt;
+    &lt;!-- 多说评论框 start --&gt;
+    &lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;&quot; data-title=&quot;&lt;%= post.title %&gt;&quot; data-url=&quot;&lt;%= page.permalink %&gt;&quot;&gt;&lt;/div&gt;
+    &lt;!-- 多说评论框 end --&gt;
+    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    var duoshuoQuery = {short_name:&apos;&lt;%= config.duoshuo_shortname %&gt;&apos;};
+      (function() {
+        var ds = document.createElement(&apos;script&apos;);
+        ds.type = &apos;text/javascript&apos;;
+        ds.async = true;
+        ds.src = (document.location.protocol == &apos;https:&apos; ? &apos;https:&apos; : &apos;http:&apos;) + &apos;//static.duoshuo.com/embed.js&apos;;
+        ds.charset = &apos;UTF-8&apos;;
+        (document.getElementsByTagName(&apos;head&apos;)[0] 
+         || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);
+      })();
+      &lt;/script&gt;
+    &lt;!-- 多说公共JS代码 end --&gt;
+  &lt;/section&gt;
+&lt;% } %&gt;
+</code></pre><p><br></p>
 
       
     </div>
