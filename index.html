@@ -146,10 +146,10 @@
 <h2 id="2-配置config"><a href="#2-配置config" class="headerlink" title="2. 配置config"></a>2. 配置config</h2><p><strong>在themes/yilia/_config.yml</strong></p>
 <pre><code>#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
 #若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
-duoshuo: shenyubin blog
-duoshuo_shortname: shenyubin blog
+duoshuo: true
+duoshuo_shortname: shenyubinblog
 </code></pre><p><br></p>
-<h2 id="3-修改themes-landscape-layout-partial-article-ejs的文件"><a href="#3-修改themes-landscape-layout-partial-article-ejs的文件" class="headerlink" title="3. 修改themes\landscape\layout_partial\article.ejs的文件"></a>3. 修改themes\landscape\layout_partial\article.ejs的文件</h2><p><strong>把原来的</strong></p>
+<h2 id="3-修改themes-landscape-layout-partial-article-ejs的文件"><a href="#3-修改themes-landscape-layout-partial-article-ejs的文件" class="headerlink" title="3. 修改themes/landscape/layout/_partial/article.ejs的文件"></a>3. 修改themes/landscape/layout/_partial/article.ejs的文件</h2><p><strong>把原来的</strong></p>
 <pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
 &lt;section id=&quot;comments&quot;&gt;
 &lt;div id=&quot;disqus_thread&quot;&gt;
