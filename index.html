@@ -123,6 +123,80 @@
       <div class="body-wrap">
         
   
+    <article id="post-如何省去git提交时候的用户名和密码输入" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/17/如何省去git提交时候的用户名和密码输入/">如何省去git提交时候的用户名和密码输入</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>前言</strong>：在大家使用github的过程中，一定会碰到这样一种情况，就是每次要push 和pull时总是要输入github的账号和密码，作为一只喜欢鼓（xia）捣（gao）的前端，在网上找了方法来避免这种状况，这些成果也是前辈提出来的，我在此只是做个总结加深自己的印象和备忘。</p>
+<p>#1. 创建文件存储GIT用户名和密码<br>在%HOME%目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录（笔者的是w7系统在C:\用户\Administrator)。创建文件名为.git-credentials,由于在Window中不允许直接创建以”.”开头的文件，所以需要借助git bash进行，C:\users\Administrator下右键打开git bash客户端，然后用touch创建文件 .git-credentials, 用vim编辑此文件，输入内容格式：</p>
+<blockquote>
+<p>touch .git-credentials<br>vim .git-credentials<br><a href="https://{username}:{password}@github.com" target="_blank" rel="external">https://{username}:{password}@github.com</a></p>
+</blockquote>
+<p><strong>ps:笔者开始时在用了touch .git-credentials 后用vim打开后写完不知道如何保存，取巧的用DW打开.git-credentials写。</strong></p>
+<hr>
+<p><strong style="color:red">vim保存关闭总结：</strong></p>
+<blockquote>
+<p>用vim “文件名字” 来打开文件后进入的是命令模式，增删改查，按esc退回bash命令行<br>在进入文件后再按i或者insert后就是编辑模式，直接在这里敲键盘写文字。按大写的ZZ或者:wq保存并退出</p>
+</blockquote>
+<p><strong style="color:red">下面是笔者网上找的vim的操作···我们不是为了说省输入户名吗？可以直接看第二步</strong></p>
+<ul>
+<li>1、vim 有两种工作模式：<br>（1） 命令模式：接受、执行 vi &amp; vim 操作命令的模式，打开文件后的默认模式；<br>（2） 编辑模式：对打开的文件内容进行 增、删、改 操作的模式；<br>在编辑模式下按下 ESC 键，回退到命令模式。</li>
+<li>2、创建、打开文件：$ vi [filename]<br>（1）使用 vi 加 文件路径（或文件名）的模式打开文件，如果文件存在则打开现有文件，如果文件不存在则新建文件，并在终端最下面一行显示打开的是一个新文件。<br>（2）键盘输入字母 “i”或“Insert”键进入最常用的插入编辑模式。<br><img src="http://upload-images.jianshu.io/upload_images/2203742-e0aaf7e84defdbe0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li>3、保存文件：<br>（1）在插入编辑模式下编辑文件。<br>（2）按下 “ESC” 键，退出编辑模式，切换到命令模式。<br>（3）在命令模式下键入”ZZ”或者”:wq”保存修改并且退出 vi 。<br>（4）如果只想保存文件，则键入”:w”，回车后底行会提示写入操作结果，并保持停留在命令模式。</li>
+<li>4、放弃所有文件修改：<br>（1）放弃所有文件修改：按下 “ESC” 键进入命令模式，键入 “:q!” 回车后放弃修改并退出vi。<br>（2）放弃所有文件修改，但不退出 vi ，即回退到文件打开后最后一次保存操作的状态，继续进行文件操作：按下 “ESC” 键进入命令模式，键入 “:e!” ，回车后回到命令模式。</li>
+</ul>
+<hr>
+<h1 id="2-添加Git-Config内容"><a href="#2-添加Git-Config内容" class="headerlink" title="2. 添加Git Config内容"></a>2. 添加Git Config内容</h1><p>进入git bash终端， 输入如下命令：</p>
+<pre><code>git config --global credential.helper store
+</code></pre><p>执行完后查看%HOME%目录下的.gitconfig文件，会多了一项：</p>
+<pre><code>[credential]
+    helper = store
+</code></pre><p>笔者随便加了几个注释文字重新开启git bash然后提交了下再也不用每次提交都要输入用户名和密码啦</p>
+<blockquote>
+<p>git status<br>git add .<br>git commit<br>git push origin master</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2203742-f6ff7fb7de15713d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>end</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/17/如何省去git提交时候的用户名和密码输入/" class="archive-article-date">
+  	<time datetime="2016-10-17T05:44:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-17</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-git常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
