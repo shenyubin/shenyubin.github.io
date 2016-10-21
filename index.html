@@ -123,6 +123,76 @@
       <div class="body-wrap">
         
   
+    <article id="post-用js写脚本自动抢购" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/21/用js写脚本自动抢购/">用js写脚本自动抢购</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>中秋节已经过去不短的时间了，但是今年的中秋节在某大型公司十分的特别<br><img src="/img/16-10-21-1.png" alt="Paste_Image.png"><br>内部有一个抢购月饼的活动，有一位调皮的程序员灵光一闪我既然是程序员，那我就写个程序来抢月饼玩啊。很快到了抢购月饼的时候发现在购物车里抢购太多了，就联系行政的人退掉。毕竟人家是在某大型公司，事情发生了没有那么容易解决。被上头以作弊的的名义上升到了三观的程度让这位前辈不用再来这里了。<br>–个人表示很同情这位前辈的</p>
+<h1 id="我们还是来聊聊技术吧"><a href="#我们还是来聊聊技术吧" class="headerlink" title="我们还是来聊聊技术吧"></a>我们还是来聊聊技术吧</h1><h3 id="那么这位前辈到底是怎么实现让抢购页面自动抢购的呢？"><a href="#那么这位前辈到底是怎么实现让抢购页面自动抢购的呢？" class="headerlink" title="那么这位前辈到底是怎么实现让抢购页面自动抢购的呢？"></a>那么这位前辈到底是怎么实现让抢购页面自动抢购的呢？</h3><p>我们先来简单模拟下抢购页面<br>html：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;抢月饼&lt;/h1&gt;</div><div class="line">    &lt;div class=<span class="string">"button"</span>&gt;</div><div class="line">    &lt;button id=<span class="string">"buy"</span>&gt;点击抢购&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	var buy;</div><div class="line">	buy = document.getElementById(<span class="string">"buy"</span>);</div><div class="line">	buy.onclick=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		console.info(<span class="string">"抢购成功"</span>);</div><div class="line">	&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>页面效果：</p>
+<p><img src="img/16-10-21-2.png" alt="Paste_Image.png"></p>
+<h3 id="那么问题来了我们怎么实现让按钮自动点击呢？"><a href="#那么问题来了我们怎么实现让按钮自动点击呢？" class="headerlink" title="那么问题来了我们怎么实现让按钮自动点击呢？"></a>那么问题来了我们怎么实现让按钮自动点击呢？</h3><p>我们写一个原生js用定时器来实现：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span>Interval(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	var buy=document.getElementById(<span class="string">"buy"</span>);</div><div class="line">	buy.click();</div><div class="line">&#125;,1000)</div></pre></td></tr></table></figure></p>
+<h3 id="嗯，确实如果放到js中的话只要调用这个定时器就能让他不断的点击抢购了，但是怎么才能放到线上的抢购页面呢，毕竟那个不是在自己的本地啊？"><a href="#嗯，确实如果放到js中的话只要调用这个定时器就能让他不断的点击抢购了，但是怎么才能放到线上的抢购页面呢，毕竟那个不是在自己的本地啊？" class="headerlink" title="嗯，确实如果放到js中的话只要调用这个定时器就能让他不断的点击抢购了，但是怎么才能放到线上的抢购页面呢，毕竟那个不是在自己的本地啊？"></a>嗯，确实如果放到js中的话只要调用这个定时器就能让他不断的点击抢购了，但是怎么才能放到线上的抢购页面呢，毕竟那个不是在自己的本地啊？</h3><p>在chrome下：</p>
+<ol>
+<li>首先，把刚才我们写好的原生js保存为.user.js比如clicktool.user.js</li>
+<li>打开chrome浏览器输入chrome://extensions，来打开chrome的扩展程序</li>
+<li>把我们保存的clicktool.user.js拖进来安装。</li>
+<li>重新打开我们的抢购页面就开始自动抢购啦。</li>
+</ol>
+<p><img src="img/16-10-21-3.png" alt="Paste_Image.png"></p>
+<p>在FireFox下:</p>
+<ol>
+<li>下载安装greasemonkey（“油猴子”）。</li>
+<li>重新启动浏览器</li>
+<li>打开greasemokey拖入我们刚才的clicktool.user.js</li>
+<li>重新进入抢购页面就可以啦</li>
+</ol>
+<p>恩恩，学到了，原来自己写的脚本只要这样就能用在页面上了，涨姿势了！瞬间慢慢的成就感，这很geek。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/21/用js写脚本自动抢购/" class="archive-article-date">
+  	<time datetime="2016-10-21T09:43:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-21</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-如何省去git提交时候的用户名和密码输入" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -699,7 +769,7 @@ deploy:
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    				<a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/js/" style="font-size: 10px;">js</a>
     			</div>
     	</section>
     

@@ -4,38 +4,14 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>开启多说 | shenyubin blog</title>
+  <title>Tag: js | shenyubin blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开启博客的多说
-1. 多说账号和多说站点创建站点点这里
-2. 配置config在themes/yilia/_config.yml
-#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
-#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
-duoshuo: true
-duoshuo_shortname: shenyu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="开启多说">
-<meta property="og:url" content="http://yoursite.com/2016/10/12/开启多说/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="shenyubin blog">
+<meta property="og:url" content="http://yoursite.com/tags/js/index.html">
 <meta property="og:site_name" content="shenyubin blog">
-<meta property="og:description" content="开启博客的多说
-1. 多说账号和多说站点创建站点点这里
-2. 配置config在themes/yilia/_config.yml
-#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
-#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
-duoshuo: true
-duoshuo_shortname: shenyu">
-<meta property="og:image" content="http://yoursite.com/img/duoshuo.png">
-<meta property="og:updated_time" content="2016-10-19T05:16:29.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开启多说">
-<meta name="twitter:description" content="开启博客的多说
-1. 多说账号和多说站点创建站点点这里
-2. 配置config在themes/yilia/_config.yml
-#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
-#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
-duoshuo: true
-duoshuo_shortname: shenyu">
-<meta name="twitter:image" content="http://yoursite.com/img/duoshuo.png">
+<meta name="twitter:title" content="shenyubin blog">
   
     <link rel="alternative" href="/atom.xml" title="shenyubin blog" type="application/atom+xml">
   
@@ -145,151 +121,54 @@ duoshuo_shortname: shenyu">
 </nav>
 
       <div class="body-wrap">
-        <article id="post-开启多说" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      开启多说
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/10/21/用js写脚本自动抢购/" class="archive-article-date">
+  	<time datetime="2016-10-21T09:43:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-21</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/10/21/用js写脚本自动抢购/">用js写脚本自动抢购</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开启博客的多说</p>
-<h2 id="1-多说账号和多说站点"><a href="#1-多说账号和多说站点" class="headerlink" title="1. 多说账号和多说站点"></a>1. 多说账号和多说站点</h2><p><a href="http://duoshuo.com/create-site/" target="_blank" rel="external">创建站点点这里</a><br><br><br><img src="/img/duoshuo.png" alt="多说站点创建截图"></p>
-<h2 id="2-配置config"><a href="#2-配置config" class="headerlink" title="2. 配置config"></a>2. 配置config</h2><p><strong>在themes/yilia/_config.yml</strong></p>
-<pre><code>#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
-#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
-duoshuo: true
-duoshuo_shortname: shenyubinblog
-</code></pre><p><br></p>
-<h2 id="3-修改themes-landscape-layout-partial-article-ejs的文件"><a href="#3-修改themes-landscape-layout-partial-article-ejs的文件" class="headerlink" title="3. 修改themes/landscape/layout/_partial/article.ejs的文件"></a>3. 修改themes/landscape/layout/_partial/article.ejs的文件</h2><p><strong>把原来的</strong></p>
-<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
-&lt;section id=&quot;comments&quot;&gt;
-&lt;div id=&quot;disqus_thread&quot;&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;//disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-&lt;% } %&gt;
-</code></pre><p><strong>改成</strong></p>
-<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname){ %&gt;
-  &lt;section id=&quot;comments&quot;&gt;
-    &lt;!-- 多说评论框 start --&gt;
-    &lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;&quot; data-title=&quot;&lt;%= post.title %&gt;&quot; data-url=&quot;&lt;%= page.permalink %&gt;&quot;&gt;&lt;/div&gt;
-    &lt;!-- 多说评论框 end --&gt;
-    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    var duoshuoQuery = {short_name:&apos;&lt;%= config.duoshuo_shortname %&gt;&apos;};
-      (function() {
-        var ds = document.createElement(&apos;script&apos;);
-        ds.type = &apos;text/javascript&apos;;
-        ds.async = true;
-        ds.src = (document.location.protocol == &apos;https:&apos; ? &apos;https:&apos; : &apos;http:&apos;) + &apos;//static.duoshuo.com/embed.js&apos;;
-        ds.charset = &apos;UTF-8&apos;;
-        (document.getElementsByTagName(&apos;head&apos;)[0] 
-         || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);
-      })();
-      &lt;/script&gt;
-    &lt;!-- 多说公共JS代码 end --&gt;
-  &lt;/section&gt;
-&lt;% } %&gt;
-</code></pre><p><br></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/12/开启多说/" class="archive-article-date">
-  	<time datetime="2016-10-12T06:09:50.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-12</time>
-</a>
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 	</div>
 
-      
+          
 
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/10/17/git常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          git常用命令
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/10/11/hexo主题更换/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo主题更换</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-	    <a class="jiathis_button_twitter"></a>
-	    <a class="jiathis_button_plus"></a> 
-	    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="开启多说" data-title="开启多说" data-url="http://yoursite.com/2016/10/12/开启多说/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 
       </div>
@@ -312,9 +191,9 @@ duoshuo_shortname: shenyubinblog
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
