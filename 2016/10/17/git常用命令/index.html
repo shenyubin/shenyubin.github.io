@@ -16,15 +16,15 @@
 <meta property="og:description" content="1. 提交github前提    ssh
 你拥有了一个 GitHub 账号之后，就可以自由的 clone 或者下载其他项目，也可以创建自己的项目，但是你没法提交代码。仔细想想也知道，肯定不可能随意就能提交代码的，如果随意可以提交代码，那么 GitHub 上的项目岂不乱了套了，所以提交代码之前一定是需要某种授权的，而 GitHub 上一般都是基于 SSH 授权的。
 那么什么是 SSH 呢？简单点说，">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2203742-85bc53d324c31be6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2203742-63f2f09362ae952d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-10-19T05:15:34.582Z">
+<meta property="og:image" content="http://yoursite.com/img/github-mustcode-1.png">
+<meta property="og:image" content="http://yoursite.com/img/github-mustcode-2.png">
+<meta property="og:updated_time" content="2016-10-23T07:28:24.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用命令">
 <meta name="twitter:description" content="1. 提交github前提    ssh
 你拥有了一个 GitHub 账号之后，就可以自由的 clone 或者下载其他项目，也可以创建自己的项目，但是你没法提交代码。仔细想想也知道，肯定不可能随意就能提交代码的，如果随意可以提交代码，那么 GitHub 上的项目岂不乱了套了，所以提交代码之前一定是需要某种授权的，而 GitHub 上一般都是基于 SSH 授权的。
 那么什么是 SSH 呢？简单点说，">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2203742-85bc53d324c31be6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://yoursite.com/img/github-mustcode-1.png">
   
     <link rel="alternative" href="/atom.xml" title="shenyubin blog" type="application/atom+xml">
   
@@ -155,9 +155,9 @@
         <h1 id="1-提交github前提-ssh"><a href="#1-提交github前提-ssh" class="headerlink" title="1. 提交github前提    ssh"></a>1. 提交github前提    ssh</h1><ul>
 <li>你拥有了一个 GitHub 账号之后，就可以自由的 clone 或者下载其他项目，也可以创建自己的项目，但是你没法提交代码。仔细想想也知道，肯定不可能随意就能提交代码的，如果随意可以提交代码，那么 GitHub 上的项目岂不乱了套了，所以提交代码之前一定是需要某种授权的，而 GitHub 上一般都是基于 SSH 授权的。</li>
 <li>那么什么是 SSH 呢？<br>简单点说，SSH是一种网络协议，用于计算机之间的加密登录。目前是每一台 Linux 电脑的标准配置。而大多数 Git 服务器都会选择使用 SSH 公钥来进行授权，所以想要在 GitHub 提交代码的第一步就是要先添加 SSH key 配置。<h3 id="1-1-生成SSH-key"><a href="#1-1-生成SSH-key" class="headerlink" title="1.1 生成SSH key"></a>1.1 生成SSH key</h3></li>
-<li>Linux 与 Mac 都是默认安装了SSH ，而 Windows 系统安装了 Git Bash 应该也是带了SSH 的。大家可以在终端（win下在Git Bash 里）输入 ssh如果出现以下提示证明你本机已经安装SSH。<br><img src="http://upload-images.jianshu.io/upload_images/2203742-85bc53d324c31be6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li>Linux 与 Mac 都是默认安装了SSH ，而 Windows 系统安装了 Git Bash 应该也是带了SSH 的。大家可以在终端（win下在Git Bash 里）输入 ssh如果出现以下提示证明你本机已经安装SSH。<br><img src="/img/github-mustcode-1.png" alt="Paste_Image.png"></li>
 <li>紧接着输入 <strong>ssh-keygen -t rsa</strong>，什么意思呢？就是指定 rsa 算法生成密钥，接着连续三个回车键（不需要输入密码），然后就会生成两个文件 <strong>id_rsa </strong>和 <strong>id_rsa.pub</strong> ，而<strong>id_rsa </strong>是密钥，<strong>id_rsa.pub</strong> 就是公钥。这两文件默认分别在如下目录里生成：<br>Linux/Mac 系统 在~/.ssh下，win系统在 /c/Documents and Settings/username/.ssh 下都是隐藏文件。<br>ps: (id_rsa.pub 公钥可以用DW,sublime等打开)<h3 id="1-2-GitHub-（setting中）上添加-SSH-key"><a href="#1-2-GitHub-（setting中）上添加-SSH-key" class="headerlink" title="1.2 GitHub （setting中）上添加 SSH key"></a>1.2 GitHub （setting中）上添加 SSH key</h3></li>
-<li>在 GitHub 上的设置页面，点击最左侧 <strong>SSH and GPG keys</strong><br><img src="http://upload-images.jianshu.io/upload_images/2203742-63f2f09362ae952d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>需要做的只是在 <strong>Key</strong> 那栏把 id_rsa.pub 公钥文件里的内容复制粘贴进去就可以了（上述示例为了安全粘贴的公钥是无效的），<strong>Title</strong> 那栏填写你自己喜欢的名，点击 <strong>Add SSH key </strong>按钮就ok了<h3 id="1-3-测试"><a href="#1-3-测试" class="headerlink" title="1.3 测试"></a>1.3 测试</h3>输入 <strong>ssh -T git@github.com </strong>进行测试，如果出现以下提示证明添加成功了。（第一次配置中间可能会出现要你填写yes/no）<blockquote>
+<li>在 GitHub 上的设置页面，点击最左侧 <strong>SSH and GPG keys</strong><br><img src="/img/github-mustcode-2.png" alt="Paste_Image.png"><br>需要做的只是在 <strong>Key</strong> 那栏把 id_rsa.pub 公钥文件里的内容复制粘贴进去就可以了（上述示例为了安全粘贴的公钥是无效的），<strong>Title</strong> 那栏填写你自己喜欢的名，点击 <strong>Add SSH key </strong>按钮就ok了<h3 id="1-3-测试"><a href="#1-3-测试" class="headerlink" title="1.3 测试"></a>1.3 测试</h3>输入 <strong>ssh -T git@github.com </strong>进行测试，如果出现以下提示证明添加成功了。（第一次配置中间可能会出现要你填写yes/no）<blockquote>
 <p>Administrator@PC-20131019WPLR MINGW64 /github/mycv (gh-pages)<br>$ ssh -T git@github.com<br>Hi shenyubin! You’ve successfully authenticated, but GitHub does not<br>provide shell access.</p>
 </blockquote>
 </li>

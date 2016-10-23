@@ -225,7 +225,7 @@
 <p><strong style="color:red">下面是笔者网上找的vim的操作···我们不是为了说省输入户名吗？可以直接看第二步</strong></p>
 <ul>
 <li>1、vim 有两种工作模式：<br>（1） 命令模式：接受、执行 vi &amp; vim 操作命令的模式，打开文件后的默认模式；<br>（2） 编辑模式：对打开的文件内容进行 增、删、改 操作的模式；<br>在编辑模式下按下 ESC 键，回退到命令模式。</li>
-<li>2、创建、打开文件：$ vi [filename]<br>（1）使用 vi 加 文件路径（或文件名）的模式打开文件，如果文件存在则打开现有文件，如果文件不存在则新建文件，并在终端最下面一行显示打开的是一个新文件。<br>（2）键盘输入字母 “i”或“Insert”键进入最常用的插入编辑模式。<br><img src="http://upload-images.jianshu.io/upload_images/2203742-e0aaf7e84defdbe0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li>2、创建、打开文件：$ vi [filename]<br>（1）使用 vi 加 文件路径（或文件名）的模式打开文件，如果文件存在则打开现有文件，如果文件不存在则新建文件，并在终端最下面一行显示打开的是一个新文件。<br>（2）键盘输入字母 “i”或“Insert”键进入最常用的插入编辑模式。<br><img src="/img/nogitpushpasword-1.png" alt="Paste_Image.png"></li>
 <li>3、保存文件：<br>（1）在插入编辑模式下编辑文件。<br>（2）按下 “ESC” 键，退出编辑模式，切换到命令模式。<br>（3）在命令模式下键入”ZZ”或者”:wq”保存修改并且退出 vi 。<br>（4）如果只想保存文件，则键入”:w”，回车后底行会提示写入操作结果，并保持停留在命令模式。</li>
 <li>4、放弃所有文件修改：<br>（1）放弃所有文件修改：按下 “ESC” 键进入命令模式，键入 “:q!” 回车后放弃修改并退出vi。<br>（2）放弃所有文件修改，但不退出 vi ，即回退到文件打开后最后一次保存操作的状态，继续进行文件操作：按下 “ESC” 键进入命令模式，键入 “:e!” ，回车后回到命令模式。</li>
 </ul>
@@ -239,7 +239,7 @@
 <blockquote>
 <p>git status<br>git add .<br>git commit<br>git push origin master</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2203742-f6ff7fb7de15713d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="/img/nogitpushpasword-2.png" alt="Paste_Image.png"></p>
 <p>end</p>
 
       
@@ -293,9 +293,9 @@
         <h1 id="1-提交github前提-ssh"><a href="#1-提交github前提-ssh" class="headerlink" title="1. 提交github前提    ssh"></a>1. 提交github前提    ssh</h1><ul>
 <li>你拥有了一个 GitHub 账号之后，就可以自由的 clone 或者下载其他项目，也可以创建自己的项目，但是你没法提交代码。仔细想想也知道，肯定不可能随意就能提交代码的，如果随意可以提交代码，那么 GitHub 上的项目岂不乱了套了，所以提交代码之前一定是需要某种授权的，而 GitHub 上一般都是基于 SSH 授权的。</li>
 <li>那么什么是 SSH 呢？<br>简单点说，SSH是一种网络协议，用于计算机之间的加密登录。目前是每一台 Linux 电脑的标准配置。而大多数 Git 服务器都会选择使用 SSH 公钥来进行授权，所以想要在 GitHub 提交代码的第一步就是要先添加 SSH key 配置。<h3 id="1-1-生成SSH-key"><a href="#1-1-生成SSH-key" class="headerlink" title="1.1 生成SSH key"></a>1.1 生成SSH key</h3></li>
-<li>Linux 与 Mac 都是默认安装了SSH ，而 Windows 系统安装了 Git Bash 应该也是带了SSH 的。大家可以在终端（win下在Git Bash 里）输入 ssh如果出现以下提示证明你本机已经安装SSH。<br><img src="http://upload-images.jianshu.io/upload_images/2203742-85bc53d324c31be6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li>Linux 与 Mac 都是默认安装了SSH ，而 Windows 系统安装了 Git Bash 应该也是带了SSH 的。大家可以在终端（win下在Git Bash 里）输入 ssh如果出现以下提示证明你本机已经安装SSH。<br><img src="/img/github-mustcode-1.png" alt="Paste_Image.png"></li>
 <li>紧接着输入 <strong>ssh-keygen -t rsa</strong>，什么意思呢？就是指定 rsa 算法生成密钥，接着连续三个回车键（不需要输入密码），然后就会生成两个文件 <strong>id_rsa </strong>和 <strong>id_rsa.pub</strong> ，而<strong>id_rsa </strong>是密钥，<strong>id_rsa.pub</strong> 就是公钥。这两文件默认分别在如下目录里生成：<br>Linux/Mac 系统 在~/.ssh下，win系统在 /c/Documents and Settings/username/.ssh 下都是隐藏文件。<br>ps: (id_rsa.pub 公钥可以用DW,sublime等打开)<h3 id="1-2-GitHub-（setting中）上添加-SSH-key"><a href="#1-2-GitHub-（setting中）上添加-SSH-key" class="headerlink" title="1.2 GitHub （setting中）上添加 SSH key"></a>1.2 GitHub （setting中）上添加 SSH key</h3></li>
-<li>在 GitHub 上的设置页面，点击最左侧 <strong>SSH and GPG keys</strong><br><img src="http://upload-images.jianshu.io/upload_images/2203742-63f2f09362ae952d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>需要做的只是在 <strong>Key</strong> 那栏把 id_rsa.pub 公钥文件里的内容复制粘贴进去就可以了（上述示例为了安全粘贴的公钥是无效的），<strong>Title</strong> 那栏填写你自己喜欢的名，点击 <strong>Add SSH key </strong>按钮就ok了<h3 id="1-3-测试"><a href="#1-3-测试" class="headerlink" title="1.3 测试"></a>1.3 测试</h3>输入 <strong>ssh -T git@github.com </strong>进行测试，如果出现以下提示证明添加成功了。（第一次配置中间可能会出现要你填写yes/no）<blockquote>
+<li>在 GitHub 上的设置页面，点击最左侧 <strong>SSH and GPG keys</strong><br><img src="/img/github-mustcode-2.png" alt="Paste_Image.png"><br>需要做的只是在 <strong>Key</strong> 那栏把 id_rsa.pub 公钥文件里的内容复制粘贴进去就可以了（上述示例为了安全粘贴的公钥是无效的），<strong>Title</strong> 那栏填写你自己喜欢的名，点击 <strong>Add SSH key </strong>按钮就ok了<h3 id="1-3-测试"><a href="#1-3-测试" class="headerlink" title="1.3 测试"></a>1.3 测试</h3>输入 <strong>ssh -T git@github.com </strong>进行测试，如果出现以下提示证明添加成功了。（第一次配置中间可能会出现要你填写yes/no）<blockquote>
 <p>Administrator@PC-20131019WPLR MINGW64 /github/mycv (gh-pages)<br>$ ssh -T git@github.com<br>Hi shenyubin! You’ve successfully authenticated, but GitHub does not<br>provide shell access.</p>
 </blockquote>
 </li>
