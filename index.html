@@ -123,6 +123,87 @@
       <div class="body-wrap">
         
   
+    <article id="post-css揭秘阅读笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/css揭秘阅读笔记/">css揭秘阅读笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="css揭秘：半透明边框"><a href="#css揭秘：半透明边框" class="headerlink" title="css揭秘：半透明边框"></a>css揭秘：半透明边框</h1><p>早在2008年 24ways.rog就在网页设计中应用了半透明的颜色，是最早尝鲜的网站之一。不过大多都是用于背景中。<br>半透明边框实现原理就是用rgba() || hsla()来实现<br>在一个div上用border:20px sold rgba(250,250,250,.5);理想状态下就能实现一个20像素的半透明边框了<br>但是事实上却是这样：</p>
+<pre><code># css部分
+*{ margin: 0; padding: 0;}
+    .father_demo{ width: 500px; height: 500px; /*background: hsl(200,0%,50%);*/ background: rgb(0,250,250); text-align: center; display: table-cell; vertical-align:middle;  position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto;}
+    .border_demo{ width: 200px; height: 200px;/* border:10px solid hsla(0,0%,100%,.5);*/ border:20px solid rgba(250,250,250,.8); background: white;  position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto;}
+
+# html部分
+&lt;div class=&quot;father_demo&quot;&gt;
+    &lt;div class=&quot;border_demo&quot;&gt;
+        demo
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>效果图：<br><img src="/img/jm-1-1.jpg" alt="效果图"></p>
+<p><strong> 用调试工具查看的边框是存在的但是给我们的感觉就没有半透明的效果。而是白色边框的感觉。</strong><br>这涉及到了背景的原理。背景有个属性background-clip。他默认的值是border-box。意味着背景更具元素的边框来就行裁剪，并且透出来的是元素的背景色。在边框以外才会显示背景。把这个属性值改成padding-box，让背景更具元素的padding来裁剪，这样边框底下就会显示背景。</p>
+<pre><code># css部分
+*{ margin: 0; padding: 0;}
+    .father_demo{ width: 500px; height: 500px; /*background: hsl(200,0%,50%);*/ background: rgb(0,250,250); text-align: center; display: table-cell; vertical-align:middle;  position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto;}
+    .border_demo{ width: 200px; height: 200px;/* border:10px solid hsla(0,0%,100%,.5);*/ border:20px solid rgba(250,250,250,.8); background: white;  position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto; background-clip: padding-box;} # 加上background-clip: padding-box;        
+</code></pre><p>效果图：<br><img src="/img/jm-1-2.jpg" alt="效果图"></p>
+<p>小tp：</p>
+<blockquote>
+<p>RGBA 颜色值得到以下浏览器的支持：IE9+、Firefox 3+、Chrome、Safari 以及 Opera 10+。<br>    RGBA 颜色值是 RGB 颜色值的扩展，带有一个 alpha 通道 - 它规定了对象的不透明度。<br>    RGBA 颜色值是这样规定的：rgba(red, green, blue, alpha)。alpha 参数是介于 0.0（完全透明）与 1.0（完全不透明）的数字。</p>
+<p>HSL 指的是 hue（色调）、saturation（饱和度）、lightness（亮度） - 表示颜色柱面坐标表示法。<br>    HSL 颜色值是这样规定的：hsl(hue, saturation, lightness)。<br>    Hue 是色盘上的度数（从 0 到 360） - 0 (或 360) 是红色，120 是绿色，240 是蓝色。Saturation 是百分比值；0% 意味着灰色，而 100% 是全彩。Lightness 同样是百分比值；0% 是黑色，100% 是白色。<br>    HSLA 颜色值得到以下浏览器的支持：IE9+、Firefox 3+、Chrome、Safari 以及 Opera 10+。<br>    HSLA 颜色值是 HSL 颜色值的扩展，带有一个 alpha 通道 - 它规定了对象的不透明度。<br>    HSLA 颜色值是这样规定的：hsla(hue, saturation, lightness, alpha)，其中的 alpha 参数定义不透明度。alpha 参数是介于 0.0（完全透明）与 1.0（完全不透明）的数字</p>
+</blockquote>
+<p>小tp2：<br>然元素水平垂直居中：</p>
+<pre><code>.demo{
+    width: 600px; height: 400px;
+    position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+    margin: auto;    /* 有了这个就自动居中了 */
+}
+</code></pre><p>兼容ie8+浏览器，ie7-就当看不见。<br>如果一定要在意ie7-我在网上瞄了几眼：</p>
+<pre><code>ie8+用display：table，而ie7-用outer绝对定位top：50%，inner用相对定位top:-50%
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/25/css揭秘阅读笔记/" class="archive-article-date">
+  	<time datetime="2016-10-25T10:29:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learn-log-css/">learn-log css</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-用js写脚本自动抢购" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -769,7 +850,7 @@ deploy:
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/js/" style="font-size: 10px;">js</a>
+    				<a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/learn-log-css/" style="font-size: 10px;">learn-log css</a>
     			</div>
     	</section>
     
@@ -781,7 +862,7 @@ deploy:
   			
   	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">github博客</a>
   	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://leenty.github.io/">leeny博客</a>
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://leenty.github.io/">leenty博客</a>
   	        
   	        </div>
   		
